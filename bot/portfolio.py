@@ -10,6 +10,10 @@ from datetime import datetime
 import pandas as pd
 
 
+# Data directory for storing trade history
+DATA_DIR = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'data')
+
+
 class Portfolio:
     """
     Manages portfolio tracking including balance, positions, and P&L.
@@ -30,7 +34,7 @@ class Portfolio:
     
     def _load_trade_history(self):
         """Load trade history from file."""
-        history_file = '/home/runner/work/trading-bot/trading-bot/data/trade_history.json'
+        history_file = os.path.join(DATA_DIR, 'trade_history.json')
         if os.path.exists(history_file):
             try:
                 with open(history_file, 'r') as f:
@@ -40,8 +44,8 @@ class Portfolio:
     
     def _save_trade_history(self):
         """Save trade history to file."""
-        os.makedirs('/home/runner/work/trading-bot/trading-bot/data', exist_ok=True)
-        history_file = '/home/runner/work/trading-bot/trading-bot/data/trade_history.json'
+        os.makedirs(DATA_DIR, exist_ok=True)
+        history_file = os.path.join(DATA_DIR, 'trade_history.json')
         try:
             with open(history_file, 'w') as f:
                 json.dump(self.trade_history, f, indent=2)
@@ -274,7 +278,7 @@ class Portfolio:
         
         if filename is None:
             timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
-            filename = f'/home/runner/work/trading-bot/trading-bot/data/trades_{timestamp}.csv'
+            filename = os.path.join(DATA_DIR, f'trades_{timestamp}.csv')
         
         try:
             df = pd.DataFrame(self.trade_history)

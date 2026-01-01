@@ -14,6 +14,10 @@ import os
 from datetime import datetime, timedelta
 
 
+# Data directory for storing state
+DATA_DIR = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'data')
+
+
 class RiskManager:
     """
     Manages risk parameters and validates trading decisions.
@@ -49,7 +53,7 @@ class RiskManager:
     
     def _load_state(self):
         """Load risk manager state from file."""
-        state_file = '/home/runner/work/trading-bot/trading-bot/data/risk_state.json'
+        state_file = os.path.join(DATA_DIR, 'risk_state.json')
         if os.path.exists(state_file):
             try:
                 with open(state_file, 'r') as f:
@@ -66,8 +70,8 @@ class RiskManager:
     
     def _save_state(self):
         """Save risk manager state to file."""
-        os.makedirs('/home/runner/work/trading-bot/trading-bot/data', exist_ok=True)
-        state_file = '/home/runner/work/trading-bot/trading-bot/data/risk_state.json'
+        os.makedirs(DATA_DIR, exist_ok=True)
+        state_file = os.path.join(DATA_DIR, 'risk_state.json')
         try:
             state = {
                 'daily_loss': self.daily_loss,

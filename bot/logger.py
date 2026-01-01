@@ -16,6 +16,10 @@ from logging.handlers import RotatingFileHandler, TimedRotatingFileHandler
 import csv
 
 
+# Log directory
+LOG_DIR = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'logs')
+
+
 class TradingLogger:
     """
     Advanced logging system for trading bot.
@@ -35,7 +39,7 @@ class TradingLogger:
         self.log_trades_to_csv = getattr(config, 'LOG_TRADES_TO_CSV', True)
         
         # Create logs directory
-        self.log_dir = '/home/runner/work/trading-bot/trading-bot/logs'
+        self.log_dir = LOG_DIR
         os.makedirs(self.log_dir, exist_ok=True)
         
         # Initialize loggers

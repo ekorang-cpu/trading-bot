@@ -18,7 +18,9 @@ SYMBOL = 'BTC/USDT'  # Example: 'ETH/USD'
 # Timeframe for market data (e.g., '1m', '5m', '1h', '1d').
 TIMEFRAME = '1h'
 
-# Amount of the base currency to use for each trade (deprecated - use POSITION_SIZE_PERCENT instead).
+# DEPRECATED: This parameter is deprecated as of version 2.0 and will be removed in version 3.0.
+# Please use POSITION_SIZE_PERCENT instead, which provides better risk management.
+# Amount of the base currency to use for each trade.
 TRADE_AMOUNT = 100  # Example: a value in USDT for a 'BTC/USDT' pair.
 
 # Use advanced multi-indicator strategy (True) or simple moving average strategy (False)

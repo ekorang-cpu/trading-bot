@@ -6,8 +6,13 @@ Simulates trading strategy on historical data and calculates performance metrics
 
 import pandas as pd
 import numpy as np
+import os
 from datetime import datetime
 from bot import indicators, advanced_strategy
+
+
+# Data directory for storing results
+DATA_DIR = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'data')
 
 
 class Backtester:
@@ -305,7 +310,7 @@ class Backtester:
         
         if filename is None:
             timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
-            filename = f'/home/runner/work/trading-bot/trading-bot/data/backtest_{timestamp}.csv'
+            filename = os.path.join(DATA_DIR, f'backtest_{timestamp}.csv')
         
         try:
             df = pd.DataFrame(self.results['trades'])
