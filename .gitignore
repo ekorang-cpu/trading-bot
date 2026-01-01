@@ -18,3 +18,8 @@ pip-selfcheck.json
 # Secrets - It is critical to not commit this file
 config.py
 *.key
+
+# Logs and Data
+logs/
+data/
+*.log
