@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Youth Service – Spirit Move Chapel International</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;600;700;900&family=Poppins:ital,wght@0,400;0,600;1,400&display=swap"
+    rel="stylesheet"
+  />
+  <style>
+    /* ─── Reset ──────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: #0a0010;
+      font-family: 'Montserrat', sans-serif;
+      padding: 20px;
+    }
+
+    /* ─── Print button (screen only) ─────────────────────────── */
+    .print-btn {
+      position: fixed;
+      top: 18px;
+      right: 18px;
+      background: linear-gradient(135deg, #f5c518, #ff6b00);
+      color: #000;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 0.85rem;
+      border: none;
+      border-radius: 30px;
+      padding: 10px 22px;
+      cursor: pointer;
+      z-index: 999;
+      box-shadow: 0 4px 20px rgba(245, 197, 24, 0.5);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .print-btn:hover { transform: scale(1.06); box-shadow: 0 6px 28px rgba(245, 197, 24, 0.7); }
+
+    /* ─── Flyer card ──────────────────────────────────────────── */
+    .flyer {
+      position: relative;
+      width: 100%;
+      max-width: 680px;
+      min-height: 960px;
+      background: linear-gradient(160deg, #12003a 0%, #1a006b 35%, #0d1f6b 65%, #001050 100%);
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow:
+        0 0 0 2px rgba(138, 43, 226, 0.4),
+        0 0 60px rgba(100, 0, 200, 0.6),
+        0 0 120px rgba(0, 60, 200, 0.3);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 0 30px 40px;
+    }
+
+    /* ─── Animated background rays ──────────────────────────── */
+    .rays {
+      position: absolute;
+      top: 0; left: 50%;
+      transform: translateX(-50%);
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      overflow: hidden;
+    }
+    .ray {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      width: 3px;
+      height: 100%;
+      background: linear-gradient(to bottom, rgba(255,220,50,0.18) 0%, transparent 70%);
+      transform-origin: top center;
+      animation: swayRay 8s ease-in-out infinite;
+    }
+    .ray:nth-child(1)  { transform: rotate(-50deg); animation-delay: 0s; }
+    .ray:nth-child(2)  { transform: rotate(-35deg); animation-delay: 0.4s; }
+    .ray:nth-child(3)  { transform: rotate(-20deg); animation-delay: 0.8s; }
+    .ray:nth-child(4)  { transform: rotate(-8deg);  animation-delay: 1.2s; }
+    .ray:nth-child(5)  { transform: rotate(0deg);   animation-delay: 1.6s; }
+    .ray:nth-child(6)  { transform: rotate(8deg);   animation-delay: 2.0s; }
+    .ray:nth-child(7)  { transform: rotate(20deg);  animation-delay: 2.4s; }
+    .ray:nth-child(8)  { transform: rotate(35deg);  animation-delay: 2.8s; }
+    .ray:nth-child(9)  { transform: rotate(50deg);  animation-delay: 3.2s; }
+    @keyframes swayRay {
+      0%, 100% { opacity: 0.5; }
+      50%       { opacity: 1;   }
+    }
+
+    /* ─── Floating particles ─────────────────────────────────── */
+    .particles { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
+    .particle {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(255, 220, 50, 0.7);
+      animation: floatUp linear infinite;
+    }
+    .particle:nth-child(1)  { width:4px; height:4px; left:10%; animation-duration:7s;  animation-delay:0s;   }
+    .particle:nth-child(2)  { width:3px; height:3px; left:20%; animation-duration:9s;  animation-delay:1s;   }
+    .particle:nth-child(3)  { width:5px; height:5px; left:30%; animation-duration:6s;  animation-delay:2s;   }
+    .particle:nth-child(4)  { width:3px; height:3px; left:42%; animation-duration:8s;  animation-delay:0.5s; }
+    .particle:nth-child(5)  { width:4px; height:4px; left:55%; animation-duration:10s; animation-delay:3s;   }
+    .particle:nth-child(6)  { width:2px; height:2px; left:65%; animation-duration:7s;  animation-delay:1.5s; }
+    .particle:nth-child(7)  { width:5px; height:5px; left:75%; animation-duration:9s;  animation-delay:0s;   }
+    .particle:nth-child(8)  { width:3px; height:3px; left:85%; animation-duration:6s;  animation-delay:2.5s; }
+    .particle:nth-child(9)  { width:4px; height:4px; left:92%; animation-duration:8s;  animation-delay:1s;   }
+    .particle:nth-child(10) { width:2px; height:2px; left:5%;  animation-duration:11s; animation-delay:4s;   }
+    @keyframes floatUp {
+      0%   { bottom: -10px; opacity: 0; transform: translateX(0); }
+      10%  { opacity: 1; }
+      90%  { opacity: 0.6; }
+      100% { bottom: 110%; opacity: 0; transform: translateX(20px); }
+    }
+
+    /* ─── Top accent bar ─────────────────────────────────────── */
+    .top-bar {
+      width: calc(100% + 60px);
+      height: 8px;
+      background: linear-gradient(90deg, #f5c518, #ff6b00, #f5c518);
+      background-size: 200% 100%;
+      animation: shimmer 3s linear infinite;
+      margin-bottom: 30px;
+    }
+    @keyframes shimmer {
+      0%   { background-position: -200% 0; }
+      100% { background-position: 200% 0; }
+    }
+
+    /* ─── Logo / flame icon ──────────────────────────────────── */
+    .logo-wrap {
+      position: relative;
+      z-index: 2;
+      margin-bottom: 6px;
+    }
+    .flame-icon {
+      width: 70px;
+      height: 70px;
+      animation: flamePulse 2.5s ease-in-out infinite;
+      filter: drop-shadow(0 0 14px rgba(255, 140, 0, 0.9)) drop-shadow(0 0 30px rgba(255, 60, 0, 0.6));
+    }
+    @keyframes flamePulse {
+      0%, 100% { transform: scale(1)    rotate(-2deg); }
+      50%       { transform: scale(1.12) rotate(2deg);  }
+    }
+
+    /* ─── Stars ──────────────────────────────────────────────── */
+    .stars-row {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 8px;
+      z-index: 2;
+    }
+    .star {
+      color: #f5c518;
+      font-size: 1.1rem;
+      animation: twinkle 2s ease-in-out infinite;
+    }
+    .star:nth-child(even) { animation-delay: 0.5s; }
+    @keyframes twinkle {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50%       { opacity: 0.4; transform: scale(0.8); }
+    }
+
+    /* ─── Welcome banner ─────────────────────────────────────── */
+    .welcome-banner {
+      z-index: 2;
+      background: linear-gradient(135deg, #f5c518, #ff6b00);
+      color: #0a0010;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.05rem;
+      letter-spacing: 3px;
+      padding: 6px 28px;
+      border-radius: 30px;
+      margin-bottom: 18px;
+      box-shadow: 0 4px 20px rgba(245, 197, 24, 0.5);
+      animation: glow 2s ease-in-out infinite alternate;
+    }
+    @keyframes glow {
+      from { box-shadow: 0 4px 20px rgba(245, 197, 24, 0.5); }
+      to   { box-shadow: 0 4px 40px rgba(245, 197, 24, 0.9), 0 0 60px rgba(255, 107, 0, 0.5); }
+    }
+
+    /* ─── Church name ────────────────────────────────────────── */
+    .church-name {
+      z-index: 2;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(1.5rem, 5vw, 2.4rem);
+      letter-spacing: 4px;
+      text-align: center;
+      line-height: 1.15;
+      color: #fff;
+      text-shadow: 0 0 20px rgba(138, 43, 226, 0.8), 0 0 40px rgba(100, 0, 200, 0.4);
+      margin-bottom: 4px;
+    }
+
+    /* ─── Divider ─────────────────────────────────────────────── */
+    .divider {
+      z-index: 2;
+      width: 80%;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #f5c518, #ff6b00, #f5c518, transparent);
+      margin: 14px 0;
+    }
+
+    /* ─── PRESENTS label ─────────────────────────────────────── */
+    .presents {
+      z-index: 2;
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.75rem;
+      letter-spacing: 6px;
+      color: rgba(255,255,255,0.55);
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    /* ─── Youth Service headline ─────────────────────────────── */
+    .headline-wrap {
+      z-index: 2;
+      position: relative;
+      text-align: center;
+      margin-bottom: 6px;
+    }
+    .headline-bg-text {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(5rem, 18vw, 9rem);
+      color: rgba(255,255,255,0.04);
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      white-space: nowrap;
+      pointer-events: none;
+      letter-spacing: 8px;
+    }
+    .headline {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(3.2rem, 12vw, 6rem);
+      letter-spacing: 8px;
+      line-height: 1;
+      background: linear-gradient(135deg, #f5c518 0%, #ff6b00 50%, #f5c518 100%);
+      background-size: 200% 100%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: gradientSlide 4s linear infinite;
+      position: relative;
+      filter: drop-shadow(0 0 16px rgba(245, 197, 24, 0.6));
+    }
+    @keyframes gradientSlide {
+      0%   { background-position: 0%   50%; }
+      100% { background-position: 200% 50%; }
+    }
+    .headline-sub {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(1.6rem, 6vw, 2.8rem);
+      letter-spacing: 12px;
+      color: rgba(255,255,255,0.88);
+      position: relative;
+    }
+
+    /* ─── Tagline ─────────────────────────────────────────────── */
+    .tagline {
+      z-index: 2;
+      font-family: 'Poppins', sans-serif;
+      font-style: italic;
+      font-size: clamp(0.85rem, 2.5vw, 1.05rem);
+      color: rgba(255, 255, 255, 0.72);
+      text-align: center;
+      max-width: 400px;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    /* ─── Details card ───────────────────────────────────────── */
+    .details-card {
+      z-index: 2;
+      width: 100%;
+      max-width: 480px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(245, 197, 24, 0.25);
+      border-radius: 16px;
+      padding: 26px 30px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      backdrop-filter: blur(6px);
+      box-shadow: 0 8px 40px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.08);
+      margin-bottom: 24px;
+    }
+    .detail-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .detail-icon {
+      flex-shrink: 0;
+      width: 44px;
+      height: 44px;
+      background: linear-gradient(135deg, rgba(245,197,24,0.2), rgba(255,107,0,0.2));
+      border: 1px solid rgba(245,197,24,0.4);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+    }
+    .detail-text { display: flex; flex-direction: column; }
+    .detail-label {
+      font-size: 0.65rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: rgba(245,197,24,0.7);
+      font-weight: 600;
+      font-family: 'Poppins', sans-serif;
+    }
+    .detail-value {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: clamp(1rem, 3.5vw, 1.3rem);
+      color: #fff;
+      letter-spacing: 1px;
+    }
+
+    /* ─── CTA banner ─────────────────────────────────────────── */
+    .cta {
+      z-index: 2;
+      width: 100%;
+      max-width: 480px;
+      background: linear-gradient(135deg, #7b00d4, #3b00a0, #0030c8);
+      border: 2px solid rgba(245,197,24,0.5);
+      border-radius: 50px;
+      padding: 18px 30px;
+      text-align: center;
+      margin-bottom: 22px;
+      box-shadow: 0 8px 40px rgba(123, 0, 212, 0.5);
+      animation: ctaPulse 3s ease-in-out infinite;
+    }
+    @keyframes ctaPulse {
+      0%, 100% { box-shadow: 0 8px 40px rgba(123, 0, 212, 0.5); }
+      50%       { box-shadow: 0 8px 60px rgba(123, 0, 212, 0.8), 0 0 80px rgba(0, 48, 200, 0.3); }
+    }
+    .cta-main {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(1.8rem, 6vw, 2.6rem);
+      letter-spacing: 6px;
+      color: #fff;
+      display: block;
+      text-shadow: 0 0 20px rgba(245,197,24,0.6);
+    }
+    .cta-sub {
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.65);
+      letter-spacing: 2px;
+      margin-top: 2px;
+      display: block;
+    }
+
+    /* ─── Hashtag row ────────────────────────────────────────── */
+    .hashtags {
+      z-index: 2;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px;
+      margin-bottom: 22px;
+    }
+    .hashtag {
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: rgba(245,197,24,0.85);
+      background: rgba(245,197,24,0.08);
+      border: 1px solid rgba(245,197,24,0.25);
+      border-radius: 20px;
+      padding: 4px 12px;
+      letter-spacing: 1px;
+    }
+
+    /* ─── Bottom accent bar ──────────────────────────────────── */
+    .bottom-bar {
+      width: calc(100% + 60px);
+      height: 6px;
+      background: linear-gradient(90deg, #3b00a0, #f5c518, #ff6b00, #f5c518, #3b00a0);
+      background-size: 200% 100%;
+      animation: shimmer 3s linear infinite reverse;
+      margin-top: auto;
+    }
+
+    /* ─── Print styles ───────────────────────────────────────── */
+    @media print {
+      body { background: #fff; padding: 0; }
+      .print-btn { display: none; }
+      .flyer {
+        box-shadow: none;
+        border-radius: 0;
+        max-width: 100%;
+        min-height: auto;
+        page-break-inside: avoid;
+      }
+      .particles, .rays { display: none; }
+      @keyframes flamePulse { 0%, 100% { transform: none; } }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Print button -->
+  <button class="print-btn" onclick="window.print()">🖨️ Print Flyer</button>
+
+  <!-- ═══════════ FLYER ═══════════ -->
+  <div class="flyer">
+
+    <!-- Background rays -->
+    <div class="rays">
+      <div class="ray"></div><div class="ray"></div><div class="ray"></div>
+      <div class="ray"></div><div class="ray"></div><div class="ray"></div>
+      <div class="ray"></div><div class="ray"></div><div class="ray"></div>
+    </div>
+
+    <!-- Floating particles -->
+    <div class="particles">
+      <div class="particle"></div><div class="particle"></div><div class="particle"></div>
+      <div class="particle"></div><div class="particle"></div><div class="particle"></div>
+      <div class="particle"></div><div class="particle"></div><div class="particle"></div>
+      <div class="particle"></div>
+    </div>
+
+    <!-- Top gold bar -->
+    <div class="top-bar"></div>
+
+    <!-- Flame logo -->
+    <div class="logo-wrap">
+      <svg class="flame-icon" viewBox="0 0 100 120" xmlns="http://www.w3.org/2000/svg">
+        <!-- Outer flame -->
+        <path d="M50 5 C50 5, 80 30, 80 60 C80 88, 65 105, 50 115 C35 105, 20 88, 20 60 C20 30, 50 5, 50 5Z"
+              fill="url(#flameOuter)"/>
+        <!-- Inner flame -->
+        <path d="M50 30 C50 30, 68 50, 68 68 C68 86, 60 98, 50 107 C40 98, 32 86, 32 68 C32 50, 50 30, 50 30Z"
+              fill="url(#flameInner)"/>
+        <!-- Core -->
+        <path d="M50 55 C50 55, 60 65, 60 74 C60 83, 55 90, 50 95 C45 90, 40 83, 40 74 C40 65, 50 55, 50 55Z"
+              fill="url(#flameCore)"/>
+        <!-- Cross overlay -->
+        <rect x="47" y="62" width="6" height="30" rx="2" fill="rgba(255,255,255,0.55)"/>
+        <rect x="38" y="72" width="24" height="6" rx="2" fill="rgba(255,255,255,0.55)"/>
+        <defs>
+          <linearGradient id="flameOuter" x1="50%" y1="0%" x2="50%" y2="100%">
+            <stop offset="0%"   stop-color="#ffe066"/>
+            <stop offset="50%"  stop-color="#ff8c00"/>
+            <stop offset="100%" stop-color="#cc2200"/>
+          </linearGradient>
+          <linearGradient id="flameInner" x1="50%" y1="0%" x2="50%" y2="100%">
+            <stop offset="0%"   stop-color="#fff176"/>
+            <stop offset="60%"  stop-color="#ff6600"/>
+            <stop offset="100%" stop-color="#dd1100"/>
+          </linearGradient>
+          <linearGradient id="flameCore" x1="50%" y1="0%" x2="50%" y2="100%">
+            <stop offset="0%"   stop-color="#ffffff"/>
+            <stop offset="100%" stop-color="#ffdd00"/>
+          </linearGradient>
+        </defs>
+      </svg>
+    </div>
+
+    <!-- Stars -->
+    <div class="stars-row">
+      <span class="star">✦</span>
+      <span class="star">★</span>
+      <span class="star">✦</span>
+      <span class="star">★</span>
+      <span class="star">✦</span>
+    </div>
+
+    <!-- Welcome badge -->
+    <div class="welcome-banner">✨ YOU ARE WELCOME ✨</div>
+
+    <!-- Church name -->
+    <div class="church-name">
+      SPIRIT MOVE CHAPEL<br>INTERNATIONAL
+    </div>
+
+    <!-- Divider -->
+    <div class="divider"></div>
+
+    <!-- Presents label -->
+    <p class="presents">— presents —</p>
+
+    <!-- Main headline -->
+    <div class="headline-wrap">
+      <span class="headline-bg-text">YOUTH</span>
+      <div class="headline">YOUTH</div>
+      <div class="headline-sub">SERVICE</div>
+    </div>
+
+    <!-- Divider -->
+    <div class="divider"></div>
+
+    <!-- Tagline -->
+    <p class="tagline">
+      "Where the Spirit moves, lives change."
+    </p>
+
+    <!-- Details card -->
+    <div class="details-card">
+      <div class="detail-row">
+        <div class="detail-icon">📅</div>
+        <div class="detail-text">
+          <span class="detail-label">When</span>
+          <span class="detail-value">Every Thursday</span>
+        </div>
+      </div>
+      <div class="detail-row">
+        <div class="detail-icon">⏰</div>
+        <div class="detail-text">
+          <span class="detail-label">Time</span>
+          <span class="detail-value">7:30 PM – 8:30 PM</span>
+        </div>
+      </div>
+      <div class="detail-row">
+        <div class="detail-icon">📍</div>
+        <div class="detail-text">
+          <span class="detail-label">Venue</span>
+          <span class="detail-value">Spirit Move Chapel International</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="cta">
+      <span class="cta-main">JOIN US TODAY!</span>
+      <span class="cta-sub">Come as you are · Leave transformed</span>
+    </div>
+
+    <!-- Hashtags -->
+    <div class="hashtags">
+      <span class="hashtag">#SpiritMove</span>
+      <span class="hashtag">#YouthService</span>
+      <span class="hashtag">#SpiritMovesYouth</span>
+      <span class="hashtag">#ThursdayVibes</span>
+      <span class="hashtag">#FireGeneration</span>
+    </div>
+
+    <!-- Bottom bar -->
+    <div class="bottom-bar"></div>
+  </div>
+
+</body>
+</html>
