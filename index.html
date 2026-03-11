@@ -14,16 +14,18 @@
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            background: #2c2c2c;
+            background: #0b0b1a;
             font-family: 'Montserrat', sans-serif;
         }
 
         .flyer {
-            width: 8.5in;
-            height: 11in;
+            width: 100%;
+            max-width: 600px;
+            min-height: 100vh;
             position: relative;
             overflow: hidden;
             background: #0b0b1a;
+            margin: 0 auto;
         }
 
         /* Background layers */
@@ -89,7 +91,7 @@
         /* Ornamental border */
         .ornate-border {
             position: absolute;
-            top: 20px; left: 20px; right: 20px; bottom: 20px;
+            top: 15px; left: 15px; right: 15px; bottom: 15px;
             border: 1px solid rgba(218, 165, 32, 0.25);
             pointer-events: none;
         }
@@ -104,8 +106,8 @@
         /* Corner ornaments */
         .corner {
             position: absolute;
-            width: 60px;
-            height: 60px;
+            width: 50px;
+            height: 50px;
             pointer-events: none;
         }
 
@@ -115,21 +117,21 @@
             background: #DAA520;
         }
 
-        .corner-tl { top: 16px; left: 16px; }
-        .corner-tl::before { top: 0; left: 0; width: 25px; height: 2px; }
-        .corner-tl::after { top: 0; left: 0; width: 2px; height: 25px; }
+        .corner-tl { top: 11px; left: 11px; }
+        .corner-tl::before { top: 0; left: 0; width: 22px; height: 2px; }
+        .corner-tl::after { top: 0; left: 0; width: 2px; height: 22px; }
 
-        .corner-tr { top: 16px; right: 16px; }
-        .corner-tr::before { top: 0; right: 0; width: 25px; height: 2px; }
-        .corner-tr::after { top: 0; right: 0; width: 2px; height: 25px; }
+        .corner-tr { top: 11px; right: 11px; }
+        .corner-tr::before { top: 0; right: 0; width: 22px; height: 2px; }
+        .corner-tr::after { top: 0; right: 0; width: 2px; height: 22px; }
 
-        .corner-bl { bottom: 16px; left: 16px; }
-        .corner-bl::before { bottom: 0; left: 0; width: 25px; height: 2px; }
-        .corner-bl::after { bottom: 0; left: 0; width: 2px; height: 25px; }
+        .corner-bl { bottom: 11px; left: 11px; }
+        .corner-bl::before { bottom: 0; left: 0; width: 22px; height: 2px; }
+        .corner-bl::after { bottom: 0; left: 0; width: 2px; height: 22px; }
 
-        .corner-br { bottom: 16px; right: 16px; }
-        .corner-br::before { bottom: 0; right: 0; width: 25px; height: 2px; }
-        .corner-br::after { bottom: 0; right: 0; width: 2px; height: 25px; }
+        .corner-br { bottom: 11px; right: 11px; }
+        .corner-br::before { bottom: 0; right: 0; width: 22px; height: 2px; }
+        .corner-br::after { bottom: 0; right: 0; width: 2px; height: 22px; }
 
         /* Content */
         .content {
@@ -138,8 +140,8 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            height: 100%;
-            padding: 50px 50px 40px;
+            min-height: 100vh;
+            padding: 40px 25px 30px;
         }
 
         /* Logo */
@@ -156,8 +158,8 @@
         }
 
         .logo {
-            width: 110px;
-            height: 110px;
+            width: 90px;
+            height: 90px;
             border-radius: 50%;
             background: linear-gradient(135deg, #0d0d2b, #1a1a4e);
             border: 2.5px solid #DAA520;
@@ -172,7 +174,7 @@
         }
 
         .logo .cross-globe {
-            font-size: 36px;
+            font-size: 30px;
             line-height: 1;
             color: #DAA520;
             text-shadow: 0 0 10px rgba(218, 165, 32, 0.3);
@@ -180,7 +182,7 @@
 
         .logo .initials {
             font-family: 'Cinzel', serif;
-            font-size: 10px;
+            font-size: 9px;
             font-weight: 700;
             color: #DAA520;
             letter-spacing: 4px;
@@ -190,25 +192,25 @@
         /* Church name */
         .church-header {
             text-align: center;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
 
         .church-header h2 {
             font-family: 'Cinzel', serif;
-            font-size: 15px;
+            font-size: 14px;
             font-weight: 600;
             color: #DAA520;
-            letter-spacing: 6px;
+            letter-spacing: 5px;
             text-transform: uppercase;
             margin-bottom: 4px;
         }
 
         .church-header .intl {
             font-family: 'Montserrat', sans-serif;
-            font-size: 9px;
+            font-size: 8px;
             font-weight: 400;
             color: rgba(218, 165, 32, 0.7);
-            letter-spacing: 8px;
+            letter-spacing: 6px;
             text-transform: uppercase;
         }
 
@@ -216,19 +218,19 @@
         .ornamental-divider {
             display: flex;
             align-items: center;
-            gap: 15px;
-            margin: 8px 0 25px;
+            gap: 12px;
+            margin: 8px 0 20px;
         }
 
         .ornamental-divider .line {
-            width: 80px;
+            width: 60px;
             height: 1px;
             background: linear-gradient(90deg, transparent, #DAA520, transparent);
         }
 
         .ornamental-divider .diamond {
-            width: 8px;
-            height: 8px;
+            width: 7px;
+            height: 7px;
             background: #DAA520;
             transform: rotate(45deg);
         }
@@ -243,28 +245,18 @@
         /* Presents text */
         .presents {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 14px;
+            font-size: 13px;
             font-style: italic;
             color: rgba(255, 255, 255, 0.5);
-            letter-spacing: 6px;
+            letter-spacing: 5px;
             text-transform: lowercase;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
         }
 
         /* Main title */
         .main-title-section {
             text-align: center;
             margin-bottom: 5px;
-        }
-
-        .main-title-section .pre-title {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 11px;
-            font-weight: 500;
-            letter-spacing: 10px;
-            color: rgba(255, 255, 255, 0.6);
-            text-transform: uppercase;
-            margin-bottom: 10px;
         }
 
         .main-title-section h1 {
@@ -275,52 +267,52 @@
 
         .main-title-section h1 .word-prayer {
             display: block;
-            font-size: 72px;
+            font-size: 48px;
             background: linear-gradient(180deg, #fff4d2 0%, #DAA520 40%, #B8860B 80%, #8B6914 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
             filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
-            letter-spacing: 12px;
+            letter-spacing: 10px;
         }
 
         .main-title-section h1 .word-tower {
             display: block;
-            font-size: 88px;
+            font-size: 60px;
             background: linear-gradient(180deg, #FFE68C 0%, #FFD700 20%, #DAA520 50%, #B8860B 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
             filter: drop-shadow(0 4px 8px rgba(0,0,0,0.4));
-            letter-spacing: 18px;
-            margin-top: -5px;
+            letter-spacing: 14px;
+            margin-top: -3px;
         }
 
         /* Flame decorations */
         .flame-row {
             display: flex;
-            gap: 8px;
-            margin: 15px 0;
-            font-size: 20px;
+            gap: 6px;
+            margin: 12px 0;
+            font-size: 18px;
             opacity: 0.7;
         }
 
         /* Scripture */
         .scripture-box {
-            max-width: 480px;
+            max-width: 400px;
             text-align: center;
-            margin: 15px 0;
-            padding: 20px 30px;
+            margin: 12px 0;
+            padding: 15px 20px;
             position: relative;
         }
 
         .scripture-box::before {
             content: '\201C';
             position: absolute;
-            top: -10px;
-            left: 5px;
+            top: -8px;
+            left: 0;
             font-family: 'Cormorant Garamond', serif;
-            font-size: 60px;
+            font-size: 45px;
             color: rgba(218, 165, 32, 0.2);
             line-height: 1;
         }
@@ -328,17 +320,17 @@
         .scripture-box::after {
             content: '\201D';
             position: absolute;
-            bottom: -30px;
-            right: 5px;
+            bottom: -22px;
+            right: 0;
             font-family: 'Cormorant Garamond', serif;
-            font-size: 60px;
+            font-size: 45px;
             color: rgba(218, 165, 32, 0.2);
             line-height: 1;
         }
 
         .scripture-box p {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 16px;
+            font-size: 15px;
             font-style: italic;
             color: rgba(255, 255, 255, 0.75);
             line-height: 1.7;
@@ -346,10 +338,10 @@
 
         .scripture-box .verse-ref {
             display: block;
-            margin-top: 10px;
+            margin-top: 8px;
             font-family: 'Montserrat', sans-serif;
             font-style: normal;
-            font-size: 10px;
+            font-size: 9px;
             font-weight: 600;
             color: #DAA520;
             letter-spacing: 2px;
@@ -361,8 +353,8 @@
             grid-template-columns: repeat(3, 1fr);
             gap: 0;
             width: 100%;
-            max-width: 520px;
-            margin: 15px 0;
+            max-width: 450px;
+            margin: 12px 0;
             border: 1px solid rgba(218, 165, 32, 0.2);
             border-radius: 4px;
             overflow: hidden;
@@ -370,7 +362,7 @@
         }
 
         .event-item {
-            padding: 22px 15px;
+            padding: 18px 10px;
             text-align: center;
             position: relative;
             backdrop-filter: blur(5px);
@@ -381,39 +373,39 @@
         }
 
         .event-item .ev-icon {
-            font-size: 22px;
-            margin-bottom: 10px;
+            font-size: 20px;
+            margin-bottom: 8px;
             display: block;
         }
 
         .event-item .ev-label {
-            font-size: 8px;
+            font-size: 7px;
             font-weight: 600;
-            letter-spacing: 3px;
+            letter-spacing: 2px;
             text-transform: uppercase;
             color: rgba(255, 255, 255, 0.4);
-            margin-bottom: 6px;
+            margin-bottom: 5px;
         }
 
         .event-item .ev-value {
             font-family: 'Cinzel', serif;
-            font-size: 16px;
+            font-size: 13px;
             font-weight: 700;
             color: #DAA520;
         }
 
         .event-item .ev-sub {
-            font-size: 10px;
+            font-size: 9px;
             color: rgba(255, 255, 255, 0.5);
-            margin-top: 4px;
+            margin-top: 3px;
         }
 
         /* Theme banner */
         .theme-banner {
             width: 100%;
-            max-width: 520px;
+            max-width: 450px;
             text-align: center;
-            padding: 18px 30px;
+            padding: 15px 20px;
             background: linear-gradient(90deg,
                 transparent,
                 rgba(218, 165, 32, 0.08) 20%,
@@ -427,17 +419,17 @@
         }
 
         .theme-banner .theme-label {
-            font-size: 8px;
+            font-size: 7px;
             font-weight: 600;
-            letter-spacing: 5px;
+            letter-spacing: 4px;
             text-transform: uppercase;
             color: rgba(255, 255, 255, 0.4);
-            margin-bottom: 6px;
+            margin-bottom: 5px;
         }
 
         .theme-banner .theme-text {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 24px;
+            font-size: 20px;
             font-weight: 700;
             color: #FFD700;
             font-style: italic;
@@ -451,12 +443,12 @@
 
         .cta .cta-text {
             font-family: 'Montserrat', sans-serif;
-            font-size: 11px;
+            font-size: 10px;
             font-weight: 600;
-            letter-spacing: 4px;
+            letter-spacing: 3px;
             text-transform: uppercase;
             color: #fff;
-            padding: 10px 35px;
+            padding: 10px 30px;
             border: 1.5px solid #DAA520;
             display: inline-block;
             background: linear-gradient(180deg, rgba(218, 165, 32, 0.1), transparent);
@@ -470,37 +462,79 @@
         }
 
         .footer .address {
-            font-size: 10px;
+            font-size: 9px;
             color: rgba(255, 255, 255, 0.4);
             letter-spacing: 1px;
-            margin-bottom: 6px;
+            margin-bottom: 5px;
         }
 
         .footer .contact-row {
             display: flex;
             justify-content: center;
-            gap: 25px;
-            margin-bottom: 10px;
+            gap: 20px;
+            margin-bottom: 8px;
+            flex-wrap: wrap;
         }
 
         .footer .contact-item {
-            font-size: 10px;
+            font-size: 9px;
             color: rgba(255, 255, 255, 0.45);
         }
 
         .footer .tagline {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 13px;
+            font-size: 12px;
             font-style: italic;
             color: rgba(218, 165, 32, 0.6);
             letter-spacing: 2px;
         }
 
         .footer-divider {
-            width: 60px;
+            width: 50px;
             height: 1px;
             background: linear-gradient(90deg, transparent, rgba(218, 165, 32, 0.4), transparent);
-            margin: 8px auto;
+            margin: 6px auto;
+        }
+
+        /* Mobile responsiveness */
+        @media (max-width: 480px) {
+            .content {
+                padding: 30px 18px 25px;
+            }
+
+            .main-title-section h1 .word-prayer {
+                font-size: 36px;
+                letter-spacing: 8px;
+            }
+
+            .main-title-section h1 .word-tower {
+                font-size: 46px;
+                letter-spacing: 10px;
+            }
+
+            .event-grid {
+                grid-template-columns: 1fr;
+                max-width: 280px;
+            }
+
+            .event-item:not(:last-child) {
+                border-right: none;
+                border-bottom: 1px solid rgba(218, 165, 32, 0.15);
+            }
+
+            .theme-banner .theme-text {
+                font-size: 17px;
+            }
+
+            .church-header h2 {
+                font-size: 12px;
+                letter-spacing: 4px;
+            }
+
+            .footer .contact-row {
+                flex-direction: column;
+                gap: 5px;
+            }
         }
 
         @media print {
