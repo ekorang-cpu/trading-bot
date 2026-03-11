@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prayer Tower - Spirit Move Chapel International</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&display=swap');
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: #2c2c2c;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .flyer {
+            width: 8.5in;
+            height: 11in;
+            position: relative;
+            overflow: hidden;
+            background: #0b0b1a;
+        }
+
+        /* Background layers */
+        .bg-gradient {
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(ellipse at 50% 0%, rgba(75, 0, 130, 0.4) 0%, transparent 50%),
+                radial-gradient(ellipse at 20% 80%, rgba(25, 25, 112, 0.3) 0%, transparent 40%),
+                radial-gradient(ellipse at 80% 80%, rgba(75, 0, 100, 0.2) 0%, transparent 40%),
+                linear-gradient(180deg, #0b0b1a 0%, #12122a 30%, #1a0a2e 60%, #0b0b1a 100%);
+        }
+
+        /* Animated light rays */
+        .light-rays {
+            position: absolute;
+            top: -50%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 600px;
+            height: 800px;
+            background: conic-gradient(
+                from 0deg at 50% 0%,
+                transparent 0deg,
+                rgba(255, 215, 0, 0.03) 10deg,
+                transparent 20deg,
+                rgba(255, 215, 0, 0.02) 40deg,
+                transparent 50deg,
+                rgba(255, 215, 0, 0.03) 70deg,
+                transparent 80deg,
+                rgba(255, 215, 0, 0.02) 100deg,
+                transparent 110deg,
+                rgba(255, 215, 0, 0.03) 130deg,
+                transparent 140deg,
+                rgba(255, 215, 0, 0.02) 160deg,
+                transparent 170deg,
+                rgba(255, 215, 0, 0.03) 190deg,
+                transparent 200deg,
+                transparent 360deg
+            );
+            opacity: 0.8;
+        }
+
+        /* Decorative particles */
+        .particles {
+            position: absolute;
+            inset: 0;
+            background-image:
+                radial-gradient(1px 1px at 100px 200px, rgba(255, 215, 0, 0.4), transparent),
+                radial-gradient(1px 1px at 300px 400px, rgba(255, 215, 0, 0.3), transparent),
+                radial-gradient(1.5px 1.5px at 500px 100px, rgba(255, 215, 0, 0.5), transparent),
+                radial-gradient(1px 1px at 200px 600px, rgba(255, 215, 0, 0.3), transparent),
+                radial-gradient(1.5px 1.5px at 600px 300px, rgba(255, 215, 0, 0.4), transparent),
+                radial-gradient(1px 1px at 400px 700px, rgba(255, 215, 0, 0.3), transparent),
+                radial-gradient(1px 1px at 150px 450px, rgba(200, 180, 255, 0.3), transparent),
+                radial-gradient(1px 1px at 550px 550px, rgba(200, 180, 255, 0.2), transparent),
+                radial-gradient(1.5px 1.5px at 50px 750px, rgba(255, 215, 0, 0.4), transparent),
+                radial-gradient(1px 1px at 650px 150px, rgba(255, 215, 0, 0.3), transparent),
+                radial-gradient(1px 1px at 350px 850px, rgba(200, 180, 255, 0.3), transparent),
+                radial-gradient(1.5px 1.5px at 450px 50px, rgba(255, 215, 0, 0.5), transparent);
+        }
+
+        /* Ornamental border */
+        .ornate-border {
+            position: absolute;
+            top: 20px; left: 20px; right: 20px; bottom: 20px;
+            border: 1px solid rgba(218, 165, 32, 0.25);
+            pointer-events: none;
+        }
+
+        .ornate-border::before {
+            content: '';
+            position: absolute;
+            top: 6px; left: 6px; right: 6px; bottom: 6px;
+            border: 1px solid rgba(218, 165, 32, 0.12);
+        }
+
+        /* Corner ornaments */
+        .corner {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            pointer-events: none;
+        }
+
+        .corner::before, .corner::after {
+            content: '';
+            position: absolute;
+            background: #DAA520;
+        }
+
+        .corner-tl { top: 16px; left: 16px; }
+        .corner-tl::before { top: 0; left: 0; width: 25px; height: 2px; }
+        .corner-tl::after { top: 0; left: 0; width: 2px; height: 25px; }
+
+        .corner-tr { top: 16px; right: 16px; }
+        .corner-tr::before { top: 0; right: 0; width: 25px; height: 2px; }
+        .corner-tr::after { top: 0; right: 0; width: 2px; height: 25px; }
+
+        .corner-bl { bottom: 16px; left: 16px; }
+        .corner-bl::before { bottom: 0; left: 0; width: 25px; height: 2px; }
+        .corner-bl::after { bottom: 0; left: 0; width: 2px; height: 25px; }
+
+        .corner-br { bottom: 16px; right: 16px; }
+        .corner-br::before { bottom: 0; right: 0; width: 25px; height: 2px; }
+        .corner-br::after { bottom: 0; right: 0; width: 2px; height: 25px; }
+
+        /* Content */
+        .content {
+            position: relative;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100%;
+            padding: 50px 50px 40px;
+        }
+
+        /* Logo */
+        .logo-wrapper {
+            position: relative;
+            margin-bottom: 10px;
+        }
+
+        .logo-glow {
+            position: absolute;
+            inset: -20px;
+            background: radial-gradient(circle, rgba(218, 165, 32, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .logo {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #0d0d2b, #1a1a4e);
+            border: 2.5px solid #DAA520;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            box-shadow:
+                0 0 20px rgba(218, 165, 32, 0.2),
+                inset 0 0 20px rgba(218, 165, 32, 0.05);
+        }
+
+        .logo .cross-globe {
+            font-size: 36px;
+            line-height: 1;
+            color: #DAA520;
+            text-shadow: 0 0 10px rgba(218, 165, 32, 0.3);
+        }
+
+        .logo .initials {
+            font-family: 'Cinzel', serif;
+            font-size: 10px;
+            font-weight: 700;
+            color: #DAA520;
+            letter-spacing: 4px;
+            margin-top: 2px;
+        }
+
+        /* Church name */
+        .church-header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .church-header h2 {
+            font-family: 'Cinzel', serif;
+            font-size: 15px;
+            font-weight: 600;
+            color: #DAA520;
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            margin-bottom: 4px;
+        }
+
+        .church-header .intl {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 9px;
+            font-weight: 400;
+            color: rgba(218, 165, 32, 0.7);
+            letter-spacing: 8px;
+            text-transform: uppercase;
+        }
+
+        /* Ornamental divider */
+        .ornamental-divider {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin: 8px 0 25px;
+        }
+
+        .ornamental-divider .line {
+            width: 80px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #DAA520, transparent);
+        }
+
+        .ornamental-divider .diamond {
+            width: 8px;
+            height: 8px;
+            background: #DAA520;
+            transform: rotate(45deg);
+        }
+
+        .ornamental-divider .dot {
+            width: 4px;
+            height: 4px;
+            background: #DAA520;
+            border-radius: 50%;
+        }
+
+        /* Presents text */
+        .presents {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 14px;
+            font-style: italic;
+            color: rgba(255, 255, 255, 0.5);
+            letter-spacing: 6px;
+            text-transform: lowercase;
+            margin-bottom: 15px;
+        }
+
+        /* Main title */
+        .main-title-section {
+            text-align: center;
+            margin-bottom: 5px;
+        }
+
+        .main-title-section .pre-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 10px;
+            color: rgba(255, 255, 255, 0.6);
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .main-title-section h1 {
+            font-family: 'Cinzel', serif;
+            font-weight: 900;
+            line-height: 1;
+        }
+
+        .main-title-section h1 .word-prayer {
+            display: block;
+            font-size: 72px;
+            background: linear-gradient(180deg, #fff4d2 0%, #DAA520 40%, #B8860B 80%, #8B6914 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+            letter-spacing: 12px;
+        }
+
+        .main-title-section h1 .word-tower {
+            display: block;
+            font-size: 88px;
+            background: linear-gradient(180deg, #FFE68C 0%, #FFD700 20%, #DAA520 50%, #B8860B 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.4));
+            letter-spacing: 18px;
+            margin-top: -5px;
+        }
+
+        /* Flame decorations */
+        .flame-row {
+            display: flex;
+            gap: 8px;
+            margin: 15px 0;
+            font-size: 20px;
+            opacity: 0.7;
+        }
+
+        /* Scripture */
+        .scripture-box {
+            max-width: 480px;
+            text-align: center;
+            margin: 15px 0;
+            padding: 20px 30px;
+            position: relative;
+        }
+
+        .scripture-box::before {
+            content: '\201C';
+            position: absolute;
+            top: -10px;
+            left: 5px;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 60px;
+            color: rgba(218, 165, 32, 0.2);
+            line-height: 1;
+        }
+
+        .scripture-box::after {
+            content: '\201D';
+            position: absolute;
+            bottom: -30px;
+            right: 5px;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 60px;
+            color: rgba(218, 165, 32, 0.2);
+            line-height: 1;
+        }
+
+        .scripture-box p {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 16px;
+            font-style: italic;
+            color: rgba(255, 255, 255, 0.75);
+            line-height: 1.7;
+        }
+
+        .scripture-box .verse-ref {
+            display: block;
+            margin-top: 10px;
+            font-family: 'Montserrat', sans-serif;
+            font-style: normal;
+            font-size: 10px;
+            font-weight: 600;
+            color: #DAA520;
+            letter-spacing: 2px;
+        }
+
+        /* Event details grid */
+        .event-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0;
+            width: 100%;
+            max-width: 520px;
+            margin: 15px 0;
+            border: 1px solid rgba(218, 165, 32, 0.2);
+            border-radius: 4px;
+            overflow: hidden;
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .event-item {
+            padding: 22px 15px;
+            text-align: center;
+            position: relative;
+            backdrop-filter: blur(5px);
+        }
+
+        .event-item:not(:last-child) {
+            border-right: 1px solid rgba(218, 165, 32, 0.15);
+        }
+
+        .event-item .ev-icon {
+            font-size: 22px;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .event-item .ev-label {
+            font-size: 8px;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.4);
+            margin-bottom: 6px;
+        }
+
+        .event-item .ev-value {
+            font-family: 'Cinzel', serif;
+            font-size: 16px;
+            font-weight: 700;
+            color: #DAA520;
+        }
+
+        .event-item .ev-sub {
+            font-size: 10px;
+            color: rgba(255, 255, 255, 0.5);
+            margin-top: 4px;
+        }
+
+        /* Theme banner */
+        .theme-banner {
+            width: 100%;
+            max-width: 520px;
+            text-align: center;
+            padding: 18px 30px;
+            background: linear-gradient(90deg,
+                transparent,
+                rgba(218, 165, 32, 0.08) 20%,
+                rgba(218, 165, 32, 0.12) 50%,
+                rgba(218, 165, 32, 0.08) 80%,
+                transparent
+            );
+            border-top: 1px solid rgba(218, 165, 32, 0.15);
+            border-bottom: 1px solid rgba(218, 165, 32, 0.15);
+            margin: 10px 0;
+        }
+
+        .theme-banner .theme-label {
+            font-size: 8px;
+            font-weight: 600;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.4);
+            margin-bottom: 6px;
+        }
+
+        .theme-banner .theme-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 24px;
+            font-weight: 700;
+            color: #FFD700;
+            font-style: italic;
+        }
+
+        /* CTA */
+        .cta {
+            margin-top: 8px;
+            text-align: center;
+        }
+
+        .cta .cta-text {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: #fff;
+            padding: 10px 35px;
+            border: 1.5px solid #DAA520;
+            display: inline-block;
+            background: linear-gradient(180deg, rgba(218, 165, 32, 0.1), transparent);
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: auto;
+            text-align: center;
+            padding-top: 15px;
+        }
+
+        .footer .address {
+            font-size: 10px;
+            color: rgba(255, 255, 255, 0.4);
+            letter-spacing: 1px;
+            margin-bottom: 6px;
+        }
+
+        .footer .contact-row {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin-bottom: 10px;
+        }
+
+        .footer .contact-item {
+            font-size: 10px;
+            color: rgba(255, 255, 255, 0.45);
+        }
+
+        .footer .tagline {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 13px;
+            font-style: italic;
+            color: rgba(218, 165, 32, 0.6);
+            letter-spacing: 2px;
+        }
+
+        .footer-divider {
+            width: 60px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(218, 165, 32, 0.4), transparent);
+            margin: 8px auto;
+        }
+
+        @media print {
+            body {
+                background: none;
+                margin: 0;
+                padding: 0;
+            }
+            .flyer {
+                box-shadow: none;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="flyer">
+        <!-- Background effects -->
+        <div class="bg-gradient"></div>
+        <div class="light-rays"></div>
+        <div class="particles"></div>
+
+        <!-- Border & corners -->
+        <div class="ornate-border"></div>
+        <div class="corner corner-tl"></div>
+        <div class="corner corner-tr"></div>
+        <div class="corner corner-bl"></div>
+        <div class="corner corner-br"></div>
+
+        <!-- Main content -->
+        <div class="content">
+
+            <!-- Logo -->
+            <div class="logo-wrapper">
+                <div class="logo-glow"></div>
+                <div class="logo">
+                    <div class="cross-globe">✝</div>
+                    <div class="initials">S C</div>
+                </div>
+            </div>
+
+            <!-- Church Name -->
+            <div class="church-header">
+                <h2>Spirit Move Chapel</h2>
+                <div class="intl">International</div>
+            </div>
+
+            <!-- Divider -->
+            <div class="ornamental-divider">
+                <div class="dot"></div>
+                <div class="line"></div>
+                <div class="diamond"></div>
+                <div class="line"></div>
+                <div class="dot"></div>
+            </div>
+
+            <!-- Presents -->
+            <div class="presents">— presents —</div>
+
+            <!-- Main Title -->
+            <div class="main-title-section">
+                <h1>
+                    <span class="word-prayer">PRAYER</span>
+                    <span class="word-tower">TOWER</span>
+                </h1>
+            </div>
+
+            <!-- Flames -->
+            <div class="flame-row">
+                🔥 🔥 🔥 🔥 🔥
+            </div>
+
+            <!-- Scripture -->
+            <div class="scripture-box">
+                <p>
+                    The name of the LORD is a strong tower;
+                    the righteous run to it and are safe.
+                </p>
+                <span class="verse-ref">— PROVERBS 18:10 —</span>
+            </div>
+
+            <!-- Event Details -->
+            <div class="event-grid">
+                <div class="event-item">
+                    <span class="ev-icon">📅</span>
+                    <div class="ev-label">Date</div>
+                    <div class="ev-value">Every Friday</div>
+                    <div class="ev-sub">Weekly Service</div>
+                </div>
+                <div class="event-item">
+                    <span class="ev-icon">⏰</span>
+                    <div class="ev-label">Time</div>
+                    <div class="ev-value">6:00 PM</div>
+                    <div class="ev-sub">Doors Open 5:30 PM</div>
+                </div>
+                <div class="event-item">
+                    <span class="ev-icon">📍</span>
+                    <div class="ev-label">Venue</div>
+                    <div class="ev-value">Main Auditorium</div>
+                    <div class="ev-sub">Spirit Move Chapel</div>
+                </div>
+            </div>
+
+            <!-- Theme -->
+            <div class="theme-banner">
+                <div class="theme-label">Theme</div>
+                <div class="theme-text">"Arise &amp; Pray — The Tower of Strength"</div>
+            </div>
+
+            <!-- CTA -->
+            <div class="cta">
+                <div class="cta-text">Everyone Is Welcome</div>
+            </div>
+
+            <!-- Footer -->
+            <div class="footer">
+                <div class="contact-row">
+                    <span class="contact-item">📞  +233 24 852 0988 </span>
+                    <span class="contact-item">📧 info@spiritmovechapel.org</span>
+                </div>
+                <div class="address">Spirit Move Chapel International • Santasi-Apire Branch</div>
+                <div class="footer-divider"></div>
+                <div class="tagline">Where the Spirit of God Moves Mightily</div>
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>
