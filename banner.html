@@ -48,7 +48,7 @@
     .btn:hover { transform: scale(1.06); box-shadow: 0 6px 28px rgba(218, 165, 32, 0.7); }
 
     /* ── Banner wrapper ────────────────────────────────── */
-    .banner-wrap { display: flex; flex-direction: column; gap: 40px; }
+    .banner-wrap { display: flex; flex-direction: column; gap: 40px; align-items: center; }
 
     /* ════════════════════════════════════════════════════
        BANNER 1 — Wide Web / Social Media Cover
@@ -148,7 +148,7 @@
     .b1-corner.bl::after  { bottom:0; left:0; width:1.5px; height:18px; }
     .b1-corner.br { bottom: 12px; right: 12px; }
     .b1-corner.br::before { bottom:0; right:0; width:18px; height:1.5px; }
-    .b1-corner.br::after  { bottom:0; right:0; width:1.5px; height:18px; }
+    .b1-corner.br::after  { bottom:0; right:0; width:2px; height:2px; }
 
     /* ── Banner 1 content layout ── */
     .b1-content {
@@ -493,6 +493,332 @@
       to   { box-shadow: 0 4px 40px rgba(245,197,24,0.8), 0 0 50px rgba(255,107,0,0.4); }
     }
 
+    /* ════════════════════════════════════════════════════
+       BANNER 3 — Large Physical Revival Banner
+       67.32in (1.71m) wide × 80.31in (2.04m) tall
+       Scaled for screen: 673px × 803px (1:10 ratio)
+    ════════════════════════════════════════════════════ */
+    .banner-3 {
+      position: relative;
+      width: 673px;
+      height: 803px;
+      background: linear-gradient(160deg, #0a0008 0%, #1a0020 20%, #0d0030 45%, #200010 70%, #0a0008 100%);
+      border-radius: 0;
+      overflow: hidden;
+      box-shadow:
+        0 0 0 3px rgba(218,165,32,0.5),
+        0 0 0 6px rgba(138,43,226,0.3),
+        0 30px 100px rgba(0,0,0,0.8);
+    }
+
+    .b3-glow {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 50% at 50% 0%, rgba(218,165,32,0.2) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 40% at 50% 100%, rgba(138,43,226,0.2) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 60% at 20% 50%, rgba(75,0,130,0.25) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 60% at 80% 50%, rgba(218,165,32,0.1) 0%, transparent 60%);
+    }
+
+    .b3-sweep {
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 40%;
+      height: 100%;
+      background: linear-gradient(
+        105deg,
+        transparent 40%,
+        rgba(255, 215, 0, 0.03) 50%,
+        transparent 60%
+      );
+      animation: b3sweep 8s ease-in-out infinite;
+    }
+    @keyframes b3sweep {
+      0%   { left: -100%; }
+      60%  { left: 200%; }
+      100% { left: 200%; }
+    }
+
+    .b3-particles {
+      position: absolute;
+      inset: 0;
+      background-image:
+        radial-gradient(2px 2px at 100px 80px, rgba(255,215,0,0.5), transparent),
+        radial-gradient(1.5px 1.5px at 250px 200px, rgba(255,215,0,0.35), transparent),
+        radial-gradient(2px 2px at 450px 120px, rgba(255,215,0,0.4), transparent),
+        radial-gradient(1.5px 1.5px at 550px 400px, rgba(200,180,255,0.3), transparent),
+        radial-gradient(2px 2px at 300px 600px, rgba(255,215,0,0.45), transparent),
+        radial-gradient(1.5px 1.5px at 150px 700px, rgba(200,180,255,0.3), transparent),
+        radial-gradient(2px 2px at 500px 750px, rgba(255,215,0,0.3), transparent),
+        radial-gradient(1.5px 1.5px at 60px 500px, rgba(255,215,0,0.4), transparent),
+        radial-gradient(2px 2px at 620px 300px, rgba(200,180,255,0.25), transparent),
+        radial-gradient(1.5px 1.5px at 400px 50px, rgba(255,215,0,0.35), transparent);
+    }
+
+    /* Gold border frame */
+    .b3-border-top, .b3-border-bottom {
+      position: absolute;
+      left: 20px;
+      right: 20px;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, rgba(218,165,32,0.6), rgba(218,165,32,0.9), rgba(218,165,32,0.6), transparent);
+    }
+    .b3-border-top    { top: 15px; }
+    .b3-border-bottom { bottom: 15px; }
+
+    .b3-border-left, .b3-border-right {
+      position: absolute;
+      top: 20px;
+      bottom: 20px;
+      width: 2px;
+      background: linear-gradient(180deg, transparent, rgba(218,165,32,0.6), rgba(218,165,32,0.9), rgba(218,165,32,0.6), transparent);
+    }
+    .b3-border-left  { left: 15px; }
+    .b3-border-right { right: 15px; }
+
+    /* Corner ornaments */
+    .b3-corner {
+      position: absolute;
+      width: 40px;
+      height: 40px;
+    }
+    .b3-corner::before, .b3-corner::after {
+      content: '';
+      position: absolute;
+      background: #DAA520;
+    }
+    .b3-corner.tl { top: 10px; left: 10px; }
+    .b3-corner.tl::before { top:0; left:0; width:24px; height:2px; }
+    .b3-corner.tl::after  { top:0; left:0; width:2px; height:24px; }
+    .b3-corner.tr { top: 10px; right: 10px; }
+    .b3-corner.tr::before { top:0; right:0; width:24px; height:2px; }
+    .b3-corner.tr::after  { top:0; right:0; width:2px; height:24px; }
+    .b3-corner.bl { bottom: 10px; left: 10px; }
+    .b3-corner.bl::before { bottom:0; left:0; width:24px; height:2px; }
+    .b3-corner.bl::after  { bottom:0; left:0; width:2px; height:24px; }
+    .b3-corner.br { bottom: 10px; right: 10px; }
+    .b3-corner.br::before { bottom:0; right:0; width:24px; height:2px; }
+    .b3-corner.br::after  { bottom:0; right:0; width:2px; height:24px; }
+
+    /* Rays behind content */
+    .b3-rays {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+    }
+    .b3-ray {
+      position: absolute;
+      top: 15%;
+      left: 50%;
+      width: 2px;
+      height: 70%;
+      background: linear-gradient(to bottom, rgba(255,220,50,0.08) 0%, transparent 80%);
+      transform-origin: top center;
+    }
+    .b3-ray:nth-child(1) { transform: rotate(-50deg); }
+    .b3-ray:nth-child(2) { transform: rotate(-25deg); }
+    .b3-ray:nth-child(3) { transform: rotate(-8deg); }
+    .b3-ray:nth-child(4) { transform: rotate(8deg); }
+    .b3-ray:nth-child(5) { transform: rotate(25deg); }
+    .b3-ray:nth-child(6) { transform: rotate(50deg); }
+
+    /* ── Banner 3 content layout ── */
+    .b3-content {
+      position: relative;
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      height: 100%;
+      padding: 40px 40px 35px;
+      text-align: center;
+    }
+
+    /* Top section — church name */
+    .b3-top {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+    .b3-church-sup {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 8px;
+      color: rgba(218,165,32,0.7);
+      text-transform: uppercase;
+    }
+    .b3-church-name {
+      font-family: 'Cinzel', serif;
+      font-weight: 900;
+      font-size: 1.6rem;
+      letter-spacing: 4px;
+      background: linear-gradient(135deg, #fff4d2, #FFD700, #DAA520);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .b3-church-sub {
+      font-family: 'Cinzel', serif;
+      font-weight: 700;
+      font-size: 0.85rem;
+      letter-spacing: 6px;
+      color: rgba(255,255,255,0.6);
+    }
+    .b3-branch {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 400;
+      letter-spacing: 5px;
+      color: rgba(255,255,255,0.4);
+      text-transform: uppercase;
+    }
+
+    /* Horizontal divider */
+    .b3-hdivider {
+      width: 300px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(218,165,32,0.7), transparent);
+    }
+
+    /* Middle section — event info */
+    .b3-middle {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .b3-event-pill {
+      background: linear-gradient(135deg, #f5c518, #ff6b00);
+      color: #0a0020;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 0.8rem;
+      letter-spacing: 4px;
+      padding: 8px 28px;
+      border-radius: 30px;
+      text-transform: uppercase;
+      box-shadow: 0 4px 20px rgba(245,197,24,0.5);
+    }
+
+    .b3-event-title {
+      font-family: 'Cinzel', serif;
+      font-weight: 900;
+      font-size: 2.8rem;
+      line-height: 1.1;
+      letter-spacing: 3px;
+      background: linear-gradient(135deg, #fff4d2, #FFD700, #DAA520);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      filter: drop-shadow(0 3px 10px rgba(0,0,0,0.5));
+    }
+
+    .b3-event-subtitle {
+      font-family: 'Cinzel', serif;
+      font-weight: 700;
+      font-size: 1.4rem;
+      letter-spacing: 5px;
+      color: rgba(255,255,255,0.8);
+      text-transform: uppercase;
+    }
+
+    .b3-theme {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem;
+      font-weight: 600;
+      font-style: italic;
+      color: rgba(255,255,255,0.7);
+      letter-spacing: 2px;
+      line-height: 1.5;
+      max-width: 500px;
+    }
+    .b3-theme em {
+      color: #FFD700;
+      font-weight: 700;
+      -webkit-text-fill-color: #FFD700;
+    }
+
+    /* Flame icon */
+    .b3-flame-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .b3-flame {
+      width: 80px;
+      height: 100px;
+      filter: drop-shadow(0 0 20px rgba(255,140,0,0.8)) drop-shadow(0 0 40px rgba(255,60,0,0.5));
+      animation: flamePulse 2.8s ease-in-out infinite;
+    }
+
+    /* Bottom section — details */
+    .b3-bottom {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .b3-detail-row {
+      display: flex;
+      gap: 30px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .b3-detail-card {
+      background: linear-gradient(135deg, rgba(218,165,32,0.12), rgba(218,165,32,0.03));
+      border: 1px solid rgba(218,165,32,0.3);
+      border-radius: 10px;
+      padding: 12px 20px;
+      text-align: center;
+      min-width: 150px;
+    }
+    .b3-detail-card .d-lbl {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.55rem;
+      font-weight: 600;
+      letter-spacing: 3px;
+      color: rgba(218,165,32,0.7);
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+    .b3-detail-card .d-val {
+      font-family: 'Cinzel', serif;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: #FFD700;
+      letter-spacing: 1px;
+    }
+
+    .b3-cta {
+      font-family: 'Cinzel', serif;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      color: #fff;
+      padding: 12px 30px;
+      border: 2px solid rgba(218,165,32,0.7);
+      background: linear-gradient(135deg, rgba(218,165,32,0.15), transparent);
+      border-radius: 6px;
+      animation: glow 2.5s ease-in-out infinite alternate;
+    }
+
+    .b3-size-note {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.5rem;
+      font-weight: 400;
+      letter-spacing: 2px;
+      color: rgba(255,255,255,0.25);
+      text-transform: uppercase;
+    }
+
     /* ── Section labels ─────────────────────────────────── */
     .label {
       font-family: 'Montserrat', sans-serif;
@@ -508,8 +834,8 @@
     @media print {
       body { background: #fff; padding: 0; gap: 30px; }
       .controls { display: none; }
-      .banner-1, .banner-2 { box-shadow: none; }
-      .b1-sweep, .b2-rays { display: none; }
+      .banner-1, .banner-2, .banner-3 { box-shadow: none; }
+      .b1-sweep, .b2-rays, .b3-sweep, .b3-rays { display: none; }
     }
   </style>
 </head>
@@ -665,6 +991,106 @@
             </div>
           </div>
           <div class="b2-cta-pill">JOIN US TODAY</div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ════ BANNER 3 — Large Physical Revival Banner ════ -->
+    <p class="label">✦ Banner 3 — Physical Revival Banner (67.32″ × 80.31″ / 1.71m × 2.04m)</p>
+
+    <div class="banner-3">
+      <div class="b3-glow"></div>
+      <div class="b3-sweep"></div>
+      <div class="b3-particles"></div>
+      <div class="b3-border-top"></div>
+      <div class="b3-border-bottom"></div>
+      <div class="b3-border-left"></div>
+      <div class="b3-border-right"></div>
+      <div class="b3-corner tl"></div>
+      <div class="b3-corner tr"></div>
+      <div class="b3-corner bl"></div>
+      <div class="b3-corner br"></div>
+      <div class="b3-rays">
+        <div class="b3-ray"></div>
+        <div class="b3-ray"></div>
+        <div class="b3-ray"></div>
+        <div class="b3-ray"></div>
+        <div class="b3-ray"></div>
+        <div class="b3-ray"></div>
+      </div>
+
+      <div class="b3-content">
+
+        <!-- Top — Church Name -->
+        <div class="b3-top">
+          <div class="b3-church-sup">Spirit Move Chapel</div>
+          <div class="b3-church-name">International</div>
+          <div class="b3-church-sub">Where the Spirit Moves</div>
+          <div class="b3-branch">Santasi-Apire Branch</div>
+        </div>
+
+        <div class="b3-hdivider"></div>
+
+        <!-- Middle — Event Info -->
+        <div class="b3-middle">
+          <div class="b3-event-pill">🔥 7 DAYS 🔥</div>
+          <div class="b3-event-title">Prophetic<br>Revival</div>
+          <div class="b3-event-subtitle">7 Days of Glory</div>
+          <div class="b3-hdivider"></div>
+          <div class="b3-theme">
+            Theme: <em>"The Power of a Man of God"</em>
+          </div>
+        </div>
+
+        <!-- Flame -->
+        <div class="b3-flame-wrap">
+          <svg class="b3-flame" viewBox="0 0 100 120" xmlns="http://www.w3.org/2000/svg">
+            <path d="M50 5 C50 5,80 30,80 60 C80 88,65 105,50 115 C35 105,20 88,20 60 C20 30,50 5,50 5Z"
+                  fill="url(#fOuter3)"/>
+            <path d="M50 30 C50 30,68 50,68 68 C68 86,60 98,50 107 C40 98,32 86,32 68 C32 50,50 30,50 30Z"
+                  fill="url(#fInner3)"/>
+            <path d="M50 55 C50 55,60 65,60 74 C60 83,55 90,50 95 C45 90,40 83,40 74 C40 65,50 55,50 55Z"
+                  fill="url(#fCore3)"/>
+            <rect x="47" y="62" width="6" height="30" rx="2" fill="rgba(255,255,255,0.55)"/>
+            <rect x="38" y="72" width="24" height="6" rx="2" fill="rgba(255,255,255,0.55)"/>
+            <defs>
+              <linearGradient id="fOuter3" x1="50%" y1="0%" x2="50%" y2="100%">
+                <stop offset="0%"   stop-color="#ffe066"/>
+                <stop offset="50%"  stop-color="#ff8c00"/>
+                <stop offset="100%" stop-color="#cc2200"/>
+              </linearGradient>
+              <linearGradient id="fInner3" x1="50%" y1="0%" x2="50%" y2="100%">
+                <stop offset="0%"   stop-color="#fff176"/>
+                <stop offset="60%"  stop-color="#ff6600"/>
+                <stop offset="100%" stop-color="#dd1100"/>
+              </linearGradient>
+              <linearGradient id="fCore3" x1="50%" y1="0%" x2="50%" y2="100%">
+                <stop offset="0%"   stop-color="#ffffff"/>
+                <stop offset="100%" stop-color="#ffdd00"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+
+        <!-- Bottom — Details -->
+        <div class="b3-bottom">
+          <div class="b3-detail-row">
+            <div class="b3-detail-card">
+              <div class="d-lbl">Sunday Service</div>
+              <div class="d-val">9:00 AM &amp; 11:00 AM</div>
+            </div>
+            <div class="b3-detail-card">
+              <div class="d-lbl">Location</div>
+              <div class="d-val">Santasi-Apire Branch</div>
+            </div>
+            <div class="b3-detail-card">
+              <div class="d-lbl">Contact</div>
+              <div class="d-val">+233 24 852 0988</div>
+            </div>
+          </div>
+          <div class="b3-cta">✦ Everyone Is Welcome ✦</div>
+          <div class="b3-size-note">Print Size: 67.32″ W × 80.31″ H (1.71m × 2.04m)</div>
         </div>
 
       </div>
