@@ -830,12 +830,50 @@
       align-self: flex-start;
     }
 
+    /* ════════════════════════════════════════════════════
+       IMAGE GALLERY — Church Photos
+    ════════════════════════════════════════════════════ */
+    .gallery {
+      display: flex;
+      gap: 30px;
+      flex-wrap: wrap;
+      justify-content: center;
+      width: 100%;
+      max-width: 1200px;
+    }
+    .gallery-item {
+      position: relative;
+      background: linear-gradient(135deg, #0d0d2b, #1a1a4e);
+      border: 2px solid rgba(218,165,32,0.4);
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow:
+        0 0 30px rgba(218,165,32,0.15),
+        0 15px 50px rgba(0,0,0,0.6);
+      transition: transform 0.3s, box-shadow 0.3s;
+      max-width: 360px;
+      flex: 1 1 280px;
+    }
+    .gallery-item:hover {
+      transform: translateY(-6px);
+      box-shadow:
+        0 0 40px rgba(218,165,32,0.3),
+        0 20px 60px rgba(0,0,0,0.7);
+    }
+    .gallery-item img {
+      display: block;
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+    }
+
     /* ── Print ──────────────────────────────────────────── */
     @media print {
       body { background: #fff; padding: 0; gap: 30px; }
       .controls { display: none; }
       .banner-1, .banner-2, .banner-3 { box-shadow: none; }
       .b1-sweep, .b2-rays, .b3-sweep, .b3-rays { display: none; }
+      .gallery-item { box-shadow: none; border: 1px solid #DAA520; }
     }
   </style>
 </head>
@@ -1093,6 +1131,21 @@
           <div class="b3-size-note">Print Size: 67.32″ W × 80.31″ H (1.71m × 2.04m)</div>
         </div>
 
+      </div>
+    </div>
+
+    <!-- ════ IMAGE GALLERY — Church Photos ════ -->
+    <p class="label">✦ Church Gallery</p>
+
+    <div class="gallery">
+      <div class="gallery-item">
+        <img src="https://github.com/user-attachments/assets/e766d93d-2680-47c3-94ec-64b3877c4a05" alt="I'm a Proud Member – Spirit Move Chapel">
+      </div>
+      <div class="gallery-item">
+        <img src="https://github.com/user-attachments/assets/49ae76d1-2850-4510-94d7-12b641feac39" alt="Spirit Move Chapel International – Church Event">
+      </div>
+      <div class="gallery-item">
+        <img src="https://github.com/user-attachments/assets/2552b405-9490-4f4c-b996-81214fbbac40" alt="Spirit Move Chapel International – Church Community">
       </div>
     </div>
 
