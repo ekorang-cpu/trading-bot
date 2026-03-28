@@ -501,7 +501,8 @@
     .banner-3 {
       position: relative;
       width: 673px;
-      height: 803px;
+      height: auto;
+      min-height: 803px;
       background: linear-gradient(160deg, #0a0008 0%, #1a0020 20%, #0d0030 45%, #200010 70%, #0a0008 100%);
       border-radius: 0;
       overflow: hidden;
@@ -632,8 +633,8 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: space-between;
-      height: 100%;
+      justify-content: flex-start;
+      gap: 22px;
       padding: 40px 40px 35px;
       text-align: center;
     }
@@ -830,12 +831,135 @@
       align-self: flex-start;
     }
 
+    /* ════════════════════════════════════════════════════
+       IMAGE GALLERY — Church Photos
+    ════════════════════════════════════════════════════ */
+    .gallery {
+      display: flex;
+      gap: 30px;
+      flex-wrap: wrap;
+      justify-content: center;
+      width: 100%;
+      max-width: 1200px;
+    }
+    .gallery-item {
+      position: relative;
+      background: linear-gradient(135deg, #0d0d2b, #1a1a4e);
+      border: 2px solid rgba(218,165,32,0.4);
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow:
+        0 0 30px rgba(218,165,32,0.15),
+        0 15px 50px rgba(0,0,0,0.6);
+      transition: transform 0.3s, box-shadow 0.3s;
+      max-width: 360px;
+      flex: 1 1 280px;
+    }
+    .gallery-item:hover {
+      transform: translateY(-6px);
+      box-shadow:
+        0 0 40px rgba(218,165,32,0.3),
+        0 20px 60px rgba(0,0,0,0.7);
+    }
+    .gallery-item img {
+      display: block;
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+    }
+
+    /* ── Banner 1 — Logo image ─────────────────────────── */
+    .b1-logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+
+    /* ── Banner 3 — Logo image at top ──────────────────── */
+    .b3-logo-img {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      border: 2px solid rgba(218,165,32,0.7);
+      object-fit: cover;
+      box-shadow:
+        0 0 20px rgba(218,165,32,0.3),
+        0 0 40px rgba(218,165,32,0.12);
+      margin-bottom: 4px;
+    }
+
+    /* ── Banner 3 — Speakers section ───────────────────── */
+    .b3-speakers {
+      display: flex;
+      gap: 50px;
+      justify-content: center;
+      align-items: flex-start;
+    }
+    .b3-speaker-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+    .b3-speaker-photo {
+      width: 160px;
+      height: 190px;
+      object-fit: cover;
+      object-position: center top;
+      border-radius: 14px;
+      border: 2.5px solid #DAA520;
+      box-shadow:
+        0 0 24px rgba(218,165,32,0.35),
+        0 8px 32px rgba(0,0,0,0.55);
+    }
+    .b3-speaker-name {
+      font-family: 'Cinzel', serif;
+      font-weight: 700;
+      font-size: 0.9rem;
+      letter-spacing: 1px;
+      color: #FFD700;
+      text-align: center;
+    }
+    .b3-speaker-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.58rem;
+      font-weight: 600;
+      letter-spacing: 3px;
+      color: rgba(255,255,255,0.55);
+      text-transform: uppercase;
+      text-align: center;
+    }
+
+    /* ── Gallery — caption ──────────────────────────────── */
+    .gallery-caption {
+      padding: 12px 16px 14px;
+      background: linear-gradient(180deg, rgba(10,0,20,0.1) 0%, rgba(10,0,20,0.85) 100%);
+    }
+    .gallery-caption .g-name {
+      font-family: 'Cinzel', serif;
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #FFD700;
+      letter-spacing: 1px;
+      margin-bottom: 3px;
+    }
+    .gallery-caption .g-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.62rem;
+      font-weight: 500;
+      letter-spacing: 3px;
+      color: rgba(255,255,255,0.55);
+      text-transform: uppercase;
+    }
+
     /* ── Print ──────────────────────────────────────────── */
     @media print {
       body { background: #fff; padding: 0; gap: 30px; }
       .controls { display: none; }
       .banner-1, .banner-2, .banner-3 { box-shadow: none; }
       .b1-sweep, .b2-rays, .b3-sweep, .b3-rays { display: none; }
+      .gallery-item { box-shadow: none; border: 1px solid #DAA520; }
     }
   </style>
 </head>
@@ -866,8 +990,7 @@
 
         <!-- Logo -->
         <div class="b1-logo">
-          <div class="cross">✝</div>
-          <div class="initials">S C</div>
+          <img src="https://github.com/user-attachments/assets/2552b405-9490-4f4c-b996-81214fbbac40" alt="Spirit Move Chapel International Logo">
         </div>
 
         <!-- Vertical rule -->
@@ -1024,6 +1147,7 @@
 
         <!-- Top — Church Name -->
         <div class="b3-top">
+          <img class="b3-logo-img" src="https://github.com/user-attachments/assets/2552b405-9490-4f4c-b996-81214fbbac40" alt="Spirit Move Chapel International Logo">
           <div class="b3-church-sup">Spirit Move Chapel</div>
           <div class="b3-church-name">International</div>
           <div class="b3-church-sub">Where the Spirit Moves</div>
@@ -1043,42 +1167,30 @@
           </div>
         </div>
 
-        <!-- Flame -->
-        <div class="b3-flame-wrap">
-          <svg class="b3-flame" viewBox="0 0 100 120" xmlns="http://www.w3.org/2000/svg">
-            <path d="M50 5 C50 5,80 30,80 60 C80 88,65 105,50 115 C35 105,20 88,20 60 C20 30,50 5,50 5Z"
-                  fill="url(#fOuter3)"/>
-            <path d="M50 30 C50 30,68 50,68 68 C68 86,60 98,50 107 C40 98,32 86,32 68 C32 50,50 30,50 30Z"
-                  fill="url(#fInner3)"/>
-            <path d="M50 55 C50 55,60 65,60 74 C60 83,55 90,50 95 C45 90,40 83,40 74 C40 65,50 55,50 55Z"
-                  fill="url(#fCore3)"/>
-            <rect x="47" y="62" width="6" height="30" rx="2" fill="rgba(255,255,255,0.55)"/>
-            <rect x="38" y="72" width="24" height="6" rx="2" fill="rgba(255,255,255,0.55)"/>
-            <defs>
-              <linearGradient id="fOuter3" x1="50%" y1="0%" x2="50%" y2="100%">
-                <stop offset="0%"   stop-color="#ffe066"/>
-                <stop offset="50%"  stop-color="#ff8c00"/>
-                <stop offset="100%" stop-color="#cc2200"/>
-              </linearGradient>
-              <linearGradient id="fInner3" x1="50%" y1="0%" x2="50%" y2="100%">
-                <stop offset="0%"   stop-color="#fff176"/>
-                <stop offset="60%"  stop-color="#ff6600"/>
-                <stop offset="100%" stop-color="#dd1100"/>
-              </linearGradient>
-              <linearGradient id="fCore3" x1="50%" y1="0%" x2="50%" y2="100%">
-                <stop offset="0%"   stop-color="#ffffff"/>
-                <stop offset="100%" stop-color="#ffdd00"/>
-              </linearGradient>
-            </defs>
-          </svg>
+        <!-- Speakers -->
+        <div class="b3-speakers">
+          <div class="b3-speaker-card">
+            <img class="b3-speaker-photo"
+                 src="https://github.com/user-attachments/assets/49ae76d1-2850-4510-94d7-12b641feac39"
+                 alt="Prophet David Obeng Jnr. – The Host">
+            <div class="b3-speaker-name">Prophet David Obeng Jnr.</div>
+            <div class="b3-speaker-title">The Host</div>
+          </div>
+          <div class="b3-speaker-card">
+            <img class="b3-speaker-photo"
+                 src="https://github.com/user-attachments/assets/e766d93d-2680-47c3-94ec-64b3877c4a05"
+                 alt="Rev. Godwill Obeng – General Overseer">
+            <div class="b3-speaker-name">Rev. Godwill Obeng</div>
+            <div class="b3-speaker-title">General Overseer</div>
+          </div>
         </div>
 
         <!-- Bottom — Details -->
         <div class="b3-bottom">
           <div class="b3-detail-row">
             <div class="b3-detail-card">
-              <div class="d-lbl">Sunday Service</div>
-              <div class="d-val">9:00 AM &amp; 11:00 AM</div>
+              <div class="d-lbl">Program Time</div>
+              <div class="d-val">7:00 PM – 9:00 PM</div>
             </div>
             <div class="b3-detail-card">
               <div class="d-lbl">Location</div>
@@ -1093,6 +1205,33 @@
           <div class="b3-size-note">Print Size: 67.32″ W × 80.31″ H (1.71m × 2.04m)</div>
         </div>
 
+      </div>
+    </div>
+
+    <!-- ════ IMAGE GALLERY — Church Photos ════ -->
+    <p class="label">✦ Church Gallery</p>
+
+    <div class="gallery">
+      <div class="gallery-item">
+        <img src="https://github.com/user-attachments/assets/e766d93d-2680-47c3-94ec-64b3877c4a05" alt="Rev. Godwill Obeng – General Overseer, Spirit Move Chapel International">
+        <div class="gallery-caption">
+          <div class="g-name">Rev. Godwill Obeng</div>
+          <div class="g-title">General Overseer</div>
+        </div>
+      </div>
+      <div class="gallery-item">
+        <img src="https://github.com/user-attachments/assets/49ae76d1-2850-4510-94d7-12b641feac39" alt="Prophet David Obeng Jnr. – The Host, Spirit Move Chapel International">
+        <div class="gallery-caption">
+          <div class="g-name">Prophet David Obeng Jnr.</div>
+          <div class="g-title">The Host</div>
+        </div>
+      </div>
+      <div class="gallery-item">
+        <img src="https://github.com/user-attachments/assets/2552b405-9490-4f4c-b996-81214fbbac40" alt="Spirit Move Chapel International – Church Logo">
+        <div class="gallery-caption">
+          <div class="g-name">Spirit Move Chapel International</div>
+          <div class="g-title">Santasi-Apire Branch</div>
+        </div>
       </div>
     </div>
 
